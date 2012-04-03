@@ -1,5 +1,5 @@
 from flask import Flask, render_template, session, request
-import facebook, http, recommend
+import facebook, http, recommend, bookinfo
 import ConfigParser, urlparse
 import auth as oauth2
 app = Flask(__name__)
@@ -25,7 +25,7 @@ def index():
 			if b is not None: 
 				recommended.append(b)
 		return render_template("/index.html", recommended = recommended)
-	except Exception, e:
+	except KeyError:
 		return render_template("/auth.html", auth_str = fb.auth_string)
 
 @app.route("/callback")
