@@ -1,6 +1,21 @@
 {% extends "layout.html" %}
 {% block body %}
 
-	This will be the index.
-	
+{% for book in recommended: %}
+	{% if book is not None and 'title' in book and 'description' in book and 'images' in book and 'thumbnail' in book['images']: %}
+
+		<div class="one-third column book">
+			<h3><a href="{{ book['infoLink'] }}">
+				{% if len(book['title']) > 30: &}
+					{{ book['title'][:27] }}
+					[...]
+				{% else: %}
+					{{ book['title'] }}
+			</a>
+			</h3>
+			<div class="book_cover">
+				<img class="cover" src="{{ book['images']['thumbnail'] }}"/>
+			</div>
+			<p>{{ book['description'] }}</p>
+		</div>
 {% endblock %}

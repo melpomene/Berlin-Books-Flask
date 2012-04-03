@@ -1,6 +1,6 @@
 from flask import Flask, render_template, session, request
-import facebook, http
-import ConfigParser
+import facebook, http, recommend
+import ConfigParser, urlparse
 import auth as oauth2
 app = Flask(__name__)
 app.secret_key = 'SESSKEY'
@@ -13,7 +13,18 @@ fb = oauth2.FacebookAuth(FACEBOOK_ID, FACEBOOK_SECRET, "http://127.0.0.1:5000/ca
 @app.route("/")
 def index():
 	try:
-		session['access_token']
+		user_list = facebook.do_fql_request(session['access_token'])
+		you = facebook.get_user_book(session['access_token'])
+
+		r = recommend.Recommend()
+		r.build_dict(user_list, you)
+		recommendations = r.compare()
+		recommended = []
+		for book in recommendations:
+			b =  bookinfo.get(book)
+			if b is not None: 
+				recommended.append(b)
+		return render_template("/index.html", recommended = recommended)
 	except Exception, e:
 		return render_template("/auth.html", auth_str = fb.auth_string)
 
