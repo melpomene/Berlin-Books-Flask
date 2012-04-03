@@ -1,6 +1,7 @@
 import pycurl
 import cStringIO
 
+""" To replace requests library due to problems with the library on some platforms."""
 def get(url):
 	buf = cStringIO.StringIO()
 	c = pycurl.Curl()
