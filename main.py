@@ -28,9 +28,6 @@ def index():
 	except Exception, e:
 		return render_template("/auth.html", auth_str = fb.auth_string)
 
-	session['test'] = "HAILOL"
-	return render_template("/index.html")
-
 @app.route("/callback")
 def callback():
 	code = request.args.get('code')
@@ -38,7 +35,7 @@ def callback():
 	response = urlparse.parse_qs(access_token)
 	session['access_token'] 	= response['access_token'][0]
 	session['expires'] 		= response['expires'][0]
-	return session['test']
+	return render_template("/callback.html")
 
 if __name__ == "__main__":
 	app.debug = True
