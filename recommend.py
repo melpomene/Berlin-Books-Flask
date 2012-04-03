@@ -1,5 +1,5 @@
 import json
-from random import choice
+from random import choice, randint
 
 class Recommend():
 	def build_dict(self, users_book_list, user_book_list):
@@ -62,7 +62,7 @@ class Recommend():
 				recommendations.append( self.book_dictionary[i])
 		if len(recommendations) == 0:
 			for i in range(4):									# Add random book if it doesn't find any
-				recommendations.append( self.book_dictionary[randInt(0, len(book_dictionary)-1)])
+				recommendations.append( self.book_dictionary[randint(0, len(book_dictionary)-1)])
 		return recommendations
 				
 		
