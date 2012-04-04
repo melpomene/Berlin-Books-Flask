@@ -2,16 +2,11 @@
 {% block body %}
 
 	{% for book in recommended: %}
-		{% 'title' in book and 'description' in book and 'images' in book and 'thumbnail' in book['images']: %}
 
+		{% if 'title' in book and 'description' in book and 'images' in book and 'thumbnail' in book['images']: %}
 			<div class="one-third column book">
 				<h3><a href="{{ book['infoLink'] }}">
-					{% if len(book['title']) > 30: %}
-						{{ book['title'][:27] }}
-						[...]
-					{% else: %}
-						{{ book['title'] }}
-					{% endif %}
+					{{ book['title']|truncate(length=27, killwords=False, end='...') }}
 				</a>
 				</h3>
 				<div class="book_cover">
