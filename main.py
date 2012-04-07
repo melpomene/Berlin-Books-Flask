@@ -8,7 +8,7 @@ config = ConfigParser.RawConfigParser()
 config.read('config.ini')
 FACEBOOK_ID = config.get("FACEBOOK", "ID")
 FACEBOOK_SECRET = config.get("FACEBOOK", "SECRET")
-fb = oauth2.FacebookAuth(FACEBOOK_ID, FACEBOOK_SECRET, "http://berlinbooks.herokuapp.com:5000/callback")
+fb = oauth2.FacebookAuth(FACEBOOK_ID, FACEBOOK_SECRET, "http://berlinbooks.herokuapp.com/callback")
 
 @app.route("/")
 def index():
