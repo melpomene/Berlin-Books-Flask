@@ -36,5 +36,17 @@
 
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="javascripts/tabs.js"></script>
+	<!-- Piwik -->
+	<script type="text/javascript">
+	var pkBaseURL = (("https:" == document.location.protocol) ? "https://links.kejsarmakten.se/piwik/" : "http://links.kejsarmakten.se/piwik/");
+	document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script type="text/javascript">
+	try {
+	var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 3);
+	piwikTracker.trackPageView();
+	piwikTracker.enableLinkTracking();
+	} catch( err ) {}
+	</script><noscript><p><img src="http://links.kejsarmakten.se/piwik/piwik.php?idsite=3" style="border:0" alt="" /></p></noscript>
+	<!-- End Piwik Tracking Code -->
 </body>
 </html>
