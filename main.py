@@ -1,5 +1,5 @@
 from flask import Flask, render_template, session, request
-import facebook, http, recommend, bookinfo
+import facebook, http, recommend, bookinfo, os
 import ConfigParser, urlparse
 import auth as oauth2
 app = Flask(__name__)
@@ -39,4 +39,5 @@ def callback():
 
 if __name__ == "__main__":
 	app.debug = True
-	app.run('0.0.0.0', 80)
+	port = int(os.environ.get('PORT', 5000))
+	app.run(host='0.0.0.0', port=port)
