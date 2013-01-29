@@ -4,6 +4,7 @@ import ConfigParser, urlparse
 import auth as oauth2
 app = Flask(__name__)
 app.secret_key = 'SESSKEY'
+app.debug = False
 config = ConfigParser.RawConfigParser()
 config.read('config.ini')
 FACEBOOK_ID = config.get("FACEBOOK", "ID")
